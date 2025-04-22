@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 let bar = {
   width: 75,
   height: 10,
-  x: (canvas.width - 75) / 2
+  x: (canvas.width - 75) / 2,
 };
 
 let ball = {
@@ -12,7 +12,7 @@ let ball = {
   x: canvas.width / 2,
   y: canvas.height - 30,
   dx: 2,
-  dy: -2
+  dy: -2,
 };
 
 let blocks = [];
@@ -36,9 +36,9 @@ document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
 
 function keyDownHandler(e) {
-  if (e.key === "a") {
+  if (e.key === "a" || e.key === "A") {
     bar.x -= 7;
-  } else if (e.key === "d") {
+  } else if (e.key === "d" || e.key === "D") {
     bar.x += 7;
   }
 }
@@ -52,7 +52,12 @@ function collisionDetection() {
     for (let r = 0; r < blockRowCount; r++) {
       let b = blocks[c][r];
       if (b.status === 1) {
-        if (ball.x > b.x && ball.x < b.x + blockWidth && ball.y > b.y && ball.y < b.y + blockHeight) {
+        if (
+          ball.x > b.x &&
+          ball.x < b.x + blockWidth &&
+          ball.y > b.y &&
+          ball.y < b.y + blockHeight
+        ) {
           ball.dy = -ball.dy;
           b.status = 0;
           score += b.score;
@@ -63,9 +68,10 @@ function collisionDetection() {
 }
 
 function drawBar() {
+  console.log("Drawing bar with: #00FFFF");
   ctx.beginPath();
   ctx.rect(bar.x, canvas.height - bar.height, bar.width, bar.height);
-  ctx.fillStyle = "#0095DD";
+  ctx.fillStyle = "#00FFFF";
   ctx.fill();
   ctx.closePath();
 }
@@ -103,6 +109,7 @@ function drawScore() {
 }
 
 function update() {
+  console.log("Updating game state");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBlocks();
   drawBall();

@@ -185,4 +185,3 @@ document.addEventListener("keyup", (event) => {
 
 // Start the game
 gameLoop();
-a;
