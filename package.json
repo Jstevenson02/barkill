@@ -1,0 +1,19 @@
+{
+  "name": "web-game-app",
+  "version": "1.0.0",
+  "description": "A simple web game where a player controls a bar to bounce a ball and hit blocks for points.",
+  "main": "src/scripts/app.js",
+  "scripts": {
+    "start": "live-server src"
+  },
+  "keywords": [
+    "game",
+    "web",
+    "javascript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
